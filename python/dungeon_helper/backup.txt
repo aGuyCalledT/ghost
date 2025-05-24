@@ -1,0 +1,32 @@
+
+self.acrobatics= self.dexterity_mod
+self.animal_handling= self.wisdom_mod
+self.arcana= self.intelligence_mod
+self.athletics= self.strength_mod
+self.deception= self.charisma_mod
+self.history= self.intelligence_mod
+self.insight= self.wisdom_mod
+self.intimidation= self.charisma_mod
+self.investigation= self.intelligence_mod
+self.medicine= self.wisdom_mod
+self.nature= self.intelligence_mod
+self.perception= self.wisdom_mod
+self.performance= self.charisma_mod
+self.persuation= self.charisma_mod
+self.religion= self.intelligence_mod
+self.sleight_of_hand= self.dexterity_mod
+self.stealth= self.dexterity_mod
+self.survival= self.wisdom_mod
+
+if "acrobatics" in proficient: self.acrobatics += self.proficiency_bonus
+if "animal_handling" in proficient: self.animal_handling += self.proficiency_bonus
+if "arcana" in proficient: self.arcana += self.proficiency_bonus
+if "athletics" in proficient: self.athletics += self.proficiency_bonus
+if "deception" in proficient: self.deception += self.proficiency_bonus
+if "history" in proficient: self.history += self.proficiency_bonus
+if "insight" in proficient: self.insight += self.proficiency_bonus
+if "intimidation" in proficient: self.intimidation += self.proficiency_bonus
+if "investigation" in proficient: self.investigation += self.proficiency_bonus
+if "medicine" in proficient: self.medicine += self.proficiency_bonus
+if "nature" in proficient: self.nature += self.proficiency_bonus
+if "perception" in proficient: self.perception += self.proficiency_bonus
