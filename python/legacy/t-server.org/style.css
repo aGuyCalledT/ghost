@@ -1,0 +1,196 @@
+body {
+    background-color: #1F1F1F;
+    color: #e8e8e8;
+    font-family: 'fira code';
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #14171a;
+    padding: 10px;
+    border-bottom: 1px solid #3c4043;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 30px;
+    margin-right: 10px;
+}
+
+header h1 {
+    font-size: 1.5em;
+    font-weight: 500;
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #8ab4f8;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.banner {
+    margin-bottom: 20px;
+}
+
+.banner img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    background-color: #181818;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card img {
+    width: 100px; /* Feste Breite */
+    height: 100px; /* Feste Höhe */
+    object-fit: cover; /* Bild füllt den Bereich aus */
+    margin-bottom: 10px;
+}
+
+.card span {
+    font-size: 0.9em;
+}
+
+.card:hover {
+    background-color: #37373D;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #3c4043;
+    background-color: #202124;
+    color: #e8e8e8;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    background-color: #8ab4f8;
+    color: #121212;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #669df6;
+}
+
+/* Zusätzliche CSS-Regeln für das Video */
+.video-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.unsinn-text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-grid a {
+    text-decoration: none; /* Entfernt die Unterstreichung */
+    color: #e8e8e8; /* Setzt die Textfarbe auf Weiß */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Ändern Sie dies in flex-end */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: flex-end; /* Ändern Sie dies in flex-end */
+}
+
+#unterseite-anzeige {
+    margin-left: 10px;
+    color: #ffffff;
+    position: relative; /* Hinzufügen von position: relative */
+    transform: translateY(-16px); /* Verschieben um 5 Pixel nach oben */
+}
+
+main a {
+    color: #8ab4f8; /* Hellblaue Farbe */
+}
+
+/* Optional: Ändern Sie die Farbe beim Überfahren mit der Maus */
+main a:hover {
+    color: #669df6; /* Etwas dunkleres Hellblau beim Hovern */
+}

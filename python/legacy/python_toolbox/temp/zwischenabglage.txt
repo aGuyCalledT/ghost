@@ -1,0 +1,91 @@
+def run_this_program(express_input = None, express_output = None):
+    while True:  # Endlosschleife, bis ein gültiger Wert erhalten wird
+            input_dir = input("\nGib den Ordner an, in dem sich die PDFs befinden.\n> ")
+            pdfs_in_input_dir = count_pdfs(input_dir) 
+
+            if pdfs_in_input_dir is not None:
+                print(f"Der angegebene Ordner enthält {pdfs_in_input_dir} PDF-Dateinen.")
+                break  # Schleife beenden, wenn ein gültiger Wert vorliegt
+
+    address_table = input(f"\nGib den Dateipfad der XLSX-Tabelle an, in der die Adressinformationen enthalten sind.\n> ")
+
+    output_dir = input(f"\nGib den Ordner an, in den die bearbeiteten PDFs abgelegt werden sollen.\n> ")
+
+    printlb(f"In den {pdfs_in_input_dir} PDFs in dem Ordner {input_dir} wird jeweils eine Fensteradresse auf der ersten Seite eingefügt und im Ordner {output_dir} abgespeichert.")
+
+    input("Drücke Enter um fortzufahren...")
+
+    add_fensteradresse_to_all(input_ordner=input_dir, table_of_addresses=address_table, output_ordner=output_dir)
+
+def add_fensteradresse_to_all(input_ordner, table_of_addresses, output_ordner):
+    nicht_gefundene_pdf = []
+    komm_ids_in_table = extract_first_column_as_strings(table_of_addresses)
+
+    for x in range(len(komm_ids_in_table)):
+        temp_pdf = f"{input_ordner}\\{komm_ids_in_table[x]}.pdf"
+        temp_zwischenschritt = f"{input_ordner}\\{komm_ids_in_table[x]}_zs.pdf"
+        temp_pdf_output = f"{output_ordner}\\{komm_ids_in_table[x]}_af.pdf"
+
+        if os.path.exists(temp_pdf):
+            print(f"\nPDF zu Komm_ID existiert {komm_ids_in_table[x]}")
+            excel_zu_bestehender_pdf(table_of_addresses, temp_pdf, int(komm_ids_in_table[x][1:]), temp_zwischenschritt)
+            overlay_first_two_pages(temp_zwischenschritt, temp_pdf_output)
+        else:
+            nicht_gefundene_pdf.append(temp_pdf)
+    print(nicht_gefundene_pdf)
+
+####
+
+while True:
+        user_input = input("\n> ").lower()
+
+        # Überprüfung auf 'beenden' oder 'exit'
+        if user_input in ["beenden", "exit", "end", "e"]:
+            return "beenden"
+        
+        # Überprüfung auf 'update' oder 'aktualisieren'
+        if user_input in ["update", "aktualisieren", "u"]:
+            return "update"
+
+        # Überprüfung auf 'starte' oder 'start'
+        if user_input in ["starte", "start", "s"]:
+            program_name = input(f"Welches Programm möchten Sie starten?\n> starte ").lower()
+            if program_name in list_of_programs:
+                return f"starte {program_name}"
+            else:
+                print("Ungültiger Programmname. Bitte versuchen Sie es erneut.")
+
+        # Überprüfung auf 'starte programm1' Format
+        elif user_input.startswith("starte ") or user_input.startswith("start "):
+            program_name = user_input.split(" ")[1] 
+            if program_name in list_of_programs:
+                return f"starte {program_name}"
+            else:
+                print("Ungültiger Programmname. Bitte versuchen Sie es erneut.")
+
+        # Überprüfung auf 'hilfe' oder 'help'
+        elif user_input in ["hilfe", "help", "h"]:
+            help_input = input("Für welches Programm benötigen Sie Hilfe?\nGib 'alle' für allgemeine Hilfe\n> hilfe ").lower()
+            if help_input in list_of_programs or help_input == "alle":
+                return f"hilfe {help_input}"
+            else:
+                print("Ungültige Eingabe. Bitte versuchen Sie es erneut.")
+
+        # Überprüfung auf 'hilfe programm1' Format
+        elif user_input.startswith("help ") or user_input.startswith("hilfe "):
+            program_name = user_input.split(" ")[1] 
+            if program_name in list_of_programs:
+                print(f"DIE FUNKTION SAGT: hilfe {program_name}")
+                return f"hilfe {program_name}"
+            else:
+                print("Ungültiger Programmname. Bitte versuchen Sie es erneut.")
+
+        # Überprüfung auf andere gültige Eingaben
+        elif user_input in ["hilfe", "help"]:
+            return user_input
+
+        # Fehlerfall
+        else:
+            print("Ungültige Eingabe. Bitte versuchen Sie es erneut.")
+
+###
